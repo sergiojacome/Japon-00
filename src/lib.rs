@@ -1,4 +1,4 @@
-use rusqlite::{Connection, Result};
+/*use rusqlite::{Connection, Result};
 
 fn create_database() -> Result<()> {
     let conn = Connection::open("telegram_bot.db")?;
@@ -13,7 +13,7 @@ fn create_database() -> Result<()> {
         [],
     )?;
     Ok(())
-}
+}*/
 
 use async_openai::{
     types::{
