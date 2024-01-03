@@ -16,3 +16,4 @@ tokio_wasi = { version = "1.25.1", features = ["macros", "rt"] }
 flowsnet-platform-sdk = "0.1"
 log = "0.4"
 store-flows = "0.3.1"
+rusqlite = "0.26.0"
