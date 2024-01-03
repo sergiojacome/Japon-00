@@ -52,7 +52,7 @@ async fn handler(update: tg_flows::Update) {
         // Registra el mensaje entrante
         conn.execute(
             "INSERT INTO messages (chat_id, message_type, message_content) VALUES (?1, 'incoming', ?2)",
-            &[&chat_id.to_string(), &text],
+            &[&chat_id, &text],
         ).unwrap();
 
         let thread_id = match store_flows::get(chat_id.to_string().as_str()) {
@@ -79,8 +79,8 @@ async fn handler(update: tg_flows::Update) {
         _ = tele.send_message(chat_id, response);
 
         conn.execute(
-            "INSERT INTO messages (chat_id, message_type, message_content) VALUES (?1, 'outgoing', ?2)",
-            &[&chat_id.to_string(), &response],
+            "INSERT INTO messages (chat_id, message_type, message_content) VALUES (?1, 'incoming', ?2)",
+            &[&chat_id, &text],
         ).unwrap();
     }
 }
