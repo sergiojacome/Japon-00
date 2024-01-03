@@ -5,7 +5,7 @@ fn create_database() -> Result<()> {
     conn.execute(
         "CREATE TABLE IF NOT EXISTS messages (
             id INTEGER PRIMARY KEY,
-            chat_id INTEGER NOT NULL,
+            chat_id TEXT NOT NULL,
             message_type TEXT NOT NULL,
             message_content TEXT NOT NULL,
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
