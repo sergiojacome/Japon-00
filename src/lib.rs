@@ -50,10 +50,10 @@ async fn handler(update: tg_flows::Update) {
         let conn = Connection::open("telegram_bot.db").unwrap();
     
         // Registra el mensaje entrante
-        conn.execute(
+        /*conn.execute(
             "INSERT INTO messages (chat_id, message_type, message_content) VALUES (?1, 'incoming', ?2)",
             &[&chat_id, &text],
-        ).unwrap();
+        ).unwrap();*/
 
         let thread_id = match store_flows::get(chat_id.to_string().as_str()) {
             Some(ti) => match text == "/restart" {
@@ -78,10 +78,10 @@ async fn handler(update: tg_flows::Update) {
         let response = run_message(thread_id.as_str(), String::from(text)).await;
         _ = tele.send_message(chat_id, response);
 
-        conn.execute(
+        /*conn.execute(
             "INSERT INTO messages (chat_id, message_type, message_content) VALUES (?1, 'outgoing', ?2)",
             &[&chat_id, &text],
-        ).unwrap();
+        ).unwrap();*/
     }
 }
 
