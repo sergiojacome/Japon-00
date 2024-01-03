@@ -49,8 +49,6 @@ async fn handler(update: tg_flows::Update) {
             }
         };
 
-        let _ = tele.send_chat_action(chat_id, "pensando...".to_string()).await;
-
         let response = run_message(thread_id.as_str(), String::from(text)).await;
         _ = tele.send_message(chat_id, response);
     }
